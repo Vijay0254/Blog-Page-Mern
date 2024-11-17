@@ -29,8 +29,10 @@ const registerController = async(req,res) =>{
 
 const loginController = async(req,res) =>{
     const { email, password } = req.body
+    console.log(email,password)
     try{
         const exist = await UserModel.findOne({email: email})
+        console.log(exist)
         if(exist){
             const verifyPassword = await bcrypt.compare(password, exist.password)
             if(verifyPassword){
