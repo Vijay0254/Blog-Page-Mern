@@ -36,7 +36,7 @@ const loginController = async(req,res) =>{
             if(verifyPassword){
                 const token = jwt.sign({email: exist.email, username: exist.username}, process.env.SECRET_KEY, {expiresIn: "1d"})
                   await res.cookie("token", token, { 
-                        secure: true, 
+                        // secure: true, 
                         sameSite: 'None'
                       });
 
