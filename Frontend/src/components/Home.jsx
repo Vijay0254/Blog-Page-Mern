@@ -9,7 +9,6 @@ const Home = () => {
   async function getPost() {
     try{
       const response = await axios.get(`${API_URL}/post/getpost`)
-      console.log(response)
       setposts(response.data)
     }
     catch(err){
