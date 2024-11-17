@@ -5,7 +5,7 @@ import { userContext } from '../App'
 
 const Post = () => {
     const { id } = useParams()
-    const API_URL = "http://localhost:3000"
+    const API_URL = "https://blog-page-mern-backend.onrender.com"
     const [post,setpost] = useState({})
     const navigate = useNavigate()
     const user = useContext(userContext)
