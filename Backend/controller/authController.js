@@ -34,8 +34,8 @@ const loginController = async(req,res) =>{
         if(exist){
             const verifyPassword = await bcrypt.compare(password, exist.password)
             if(verifyPassword){
-                const token = await jwt.sign({email: exist.email, username: exist.username}, process.env.SECRET_KEY, {expiresIn: "1d"})
-                res.cookie("token", token)
+                const token = jwt.sign({email: exist.email, username: exist.username}, process.env.SECRET_KEY, {expiresIn: "1d"})
+                res.cookie("token", token, { httpOnly: true, secure: true, sameSite: 'Strict' })
                 return res.status(200).json({message: "User exist"})
             }
             else{
