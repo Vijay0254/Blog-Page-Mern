@@ -6,7 +6,7 @@ const EditPost = () => {
 
     const [title,settitle] = useState("")
     const [description,setdescription] = useState("")
-    const API_URL = "http://localhost:3000"
+    const API_URL = "https://blog-page-mern-backend.onrender.com"
     const navigate = useNavigate()
     const { id } = useParams()
 
