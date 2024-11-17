@@ -19,8 +19,10 @@ const Create = () => {
         formData.append('description', description)
         formData.append('email', user.email)
         formData.append('file', file)
+        console.log("formdata:", formData)
         try{
             const response = await axios.post(`${API_URL}/post/create`, formData)
+            console.log("response:", response)
             if(response.data.message == "Enter Title and Description"){
                 alert('Enter Title and Description')
             }
