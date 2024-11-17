@@ -6,13 +6,13 @@ import axios from 'axios'
 const Navbar = () => {
     const user = useContext(userContext)
     const API_URL = "https://blog-page-mern-backend.onrender.com"
-
+    const navigate = useNavigate()
     async function handleLogout() {
         try{
             const response = await axios.get(`${API_URL}/auth/logout`)
             if(response.data.message == "Token Deleted Successfully")
             {
-                window.location.href = "/login"
+                navigate("/login")
             }
         }
         catch(err){
