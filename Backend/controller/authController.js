@@ -38,8 +38,6 @@ const loginController = async(req,res) =>{
                 const token = jwt.sign({email: exist.email, username: exist.username}, process.env.SECRET_KEY, {expiresIn: "1d"})
                   await res.cookie("token", token, { 
                         secure: true, 
-                        httpOnly: true, 
-                        sameSite: 'Strict' 
                       });
 
                 return res.status(200).json({message: "User exist"})
@@ -60,7 +58,6 @@ const loginController = async(req,res) =>{
 
 const verifyUser = (req,res,next) =>{
     const { token } = req.cookies
-    console.log("token:" token)
     if(token){
         const verified = jwt.verify(token, process.env.SECRET_KEY)
         if(verified){
