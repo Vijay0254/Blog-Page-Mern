@@ -12,7 +12,9 @@ const postRouter = require('./router/postRouter')
 app.use(cors({
     origin: ["https://blog-page-mern-frontend.onrender.com"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    credentials: true
+    credentials: true,
+    sameSite: "None",
+    secure: true
 }))
 app.use(cookieParser())
 app.use(express.json())
