@@ -38,6 +38,7 @@ const loginController = async(req,res) =>{
                 const token = jwt.sign({email: exist.email, username: exist.username}, process.env.SECRET_KEY, {expiresIn: "1d"})
                   await res.cookie("token", token, { 
                         secure: true, 
+                        sameSite: 'None'
                       });
 
                 return res.status(200).json({message: "User exist"})
