@@ -9,11 +9,10 @@ const Login = () => {
     const navigate = useNavigate()
     const API_URL = "https://blog-page-mern-backend.onrender.com"
 
-    axios.defaults.withCredentials = true
     async function handleLogin(event) {
         event.preventDefault()
         try{
-            const response = await axios.post(`${API_URL}/auth/login`,{email: email, password: password})
+            const response = await axios.post(`${API_URL}/auth/login`,{email: email, password: password}, {withCredentials: true})
             if(response.data.message == "User exist"){
                 setemail("")
                 setpassword("")
