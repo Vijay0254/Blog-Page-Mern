@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const Navbar = () => {
     const user = useContext(userContext)
-    const API_URL = "http://localhost:3000"
+    const API_URL = "https://blog-page-mern-backend.onrender.com"
 
     async function handleLogout() {
         try{
