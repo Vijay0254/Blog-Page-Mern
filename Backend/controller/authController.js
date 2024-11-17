@@ -36,7 +36,7 @@ const loginController = async(req,res) =>{
             if(verifyPassword){
                 const token = jwt.sign({email: exist.email, username: exist.username}, process.env.SECRET_KEY, {expiresIn: "1d"})
                   await res.cookie("token", token, { 
-                        // secure: true, 
+                        secure: true, 
                         sameSite: 'None'
                       });
 
@@ -86,7 +86,7 @@ const verifyUserController = (req,res) =>{
 }
 
 const logoutController = async(req,res) =>{
-    await res.clearCookie('token', { sameSite: 'Strict', secure: true })
+    await res.clearCookie('token', { sameSite: 'None', secure: true })
     return res.status(200).json({message: "Token Deleted Successfully"})
 }
 
