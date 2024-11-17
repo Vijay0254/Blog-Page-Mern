@@ -7,7 +7,7 @@ const Login = () => {
     const [email,setemail] = useState("")
     const [password,setpassword] = useState("")
     const navigate = useNavigate()
-    const API_URL = "http://localhost:3000"
+    const API_URL = "https://blog-page-mern-backend.onrender.com"
 
     axios.defaults.withCredentials = true
     async function handleLogin(event) {
