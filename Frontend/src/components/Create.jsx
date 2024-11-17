@@ -9,7 +9,7 @@ const Create = () => {
     const [description,setdescription] = useState("")
     const [file,setfile] = useState("")
     const user = useContext(userContext)
-    const API_URL = "http://localhost:3000"
+    const API_URL = "https://blog-page-mern-backend.onrender.com"
     const navigate = useNavigate()
 
     async function handleSubmitPost(event) {
