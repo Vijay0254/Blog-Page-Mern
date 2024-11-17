@@ -13,6 +13,8 @@ const Login = () => {
         event.preventDefault()
         try{
             const response = await axios.post(`${API_URL}/auth/login`,{email: email, password: password}, {withCredentials: true})
+            console.log(response)
+            console.log(response.data.message)
             if(response.data.message == "User exist"){
                 setemail("")
                 setpassword("")
