@@ -80,10 +80,7 @@ const verifyUserController = (req,res) =>{
 }
 
 const logoutController = async(req,res) =>{
-    await res.clearCookie('token', { 
-                        secure: true, 
-                        
-                      })
+    await res.clearCookie('token', { sameSite: 'Strict', secure: true })
     return res.status(200).json({message: "Token Deleted Successfully"})
 }
 
