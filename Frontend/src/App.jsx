@@ -14,7 +14,7 @@ export const userContext = createContext()
 const App = () => {
 
   const [user,setuser] = useState("")
-  const API_URL = "http://localhost:3000"
+  const API_URL = "https://blog-page-mern-backend.onrender.com"
 
   axios.defaults.withCredentials = true
   async function getData() {
