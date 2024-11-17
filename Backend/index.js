@@ -13,9 +13,7 @@ app.use(cors({
     origin: ["https://blog-page-mern-frontend.onrender.com"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
-    secure: true, 
-    sameSite: 'Strict',
-}))
+}));
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
