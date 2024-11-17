@@ -56,21 +56,26 @@ const loginController = async(req,res) =>{
     }
 }
 
-const verifyUser = (req,res,next) =>{
-    const  token  = req.cookies.token
-    if(token){
-        const verified = jwt.verify(token, process.env.SECRET_KEY)
-        if(verified){
-            req.email = verified.email
-            req.username = verified.username
-            next()
+const verifyUser = async(req,res,next) =>{
+   try{
+        const  token  = await req.cookies.token
+        if(token){
+            const verified = jwt.verify(token, process.env.SECRET_KEY)
+            if(verified){
+                req.email = verified.email
+                req.username = verified.username
+                next()
+            }
+            else{
+                return res.status(200).json({message: "Token is not Verified"})
+            }
         }
         else{
-            return res.status(200).json({message: "Token is not Verified"})
+            return res.status(200).json({message: "Token is missing"})
         }
-    }
-    else{
-        return res.status(200).json({message: "Token is missing"})
+   }
+   catch(err){
+        console.log(`Error in Verifying - ${err}`)
     }
 
 }
