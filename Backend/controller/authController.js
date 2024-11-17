@@ -36,7 +36,12 @@ const loginController = async(req,res) =>{
             console.log(verifyPassword)
             if(verifyPassword){
                 const token = jwt.sign({email: exist.email, username: exist.username}, process.env.SECRET_KEY, {expiresIn: "1d"})
-                await res.cookie("token", token, { secure: true, sameSite: 'Strict' })
+                  await res.cookie("token", token, { 
+                        secure: true, 
+                        httpOnly: true, 
+                        sameSite: 'Strict' 
+                      });
+
                 return res.status(200).json({message: "User exist"})
             }
             else{
