@@ -29,15 +29,15 @@ const registerController = async(req,res) =>{
 
 const loginController = async(req,res) =>{
     const { email, password } = req.body
-    console.log(email,password)
     try{
         const exist = await UserModel.findOne({email: email})
-        console.log(exist)
         if(exist){
             const verifyPassword = await bcrypt.compare(password, exist.password)
+            console.log(verifyPassword)
             if(verifyPassword){
                 const token = jwt.sign({email: exist.email, username: exist.username}, process.env.SECRET_KEY, {expiresIn: "1d"})
                 res.cookie("token", token, { httpOnly: true, secure: true, sameSite: 'Strict' })
+                console.log("token:", token)
                 return res.status(200).json({message: "User exist"})
             }
             else{
