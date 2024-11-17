@@ -13,7 +13,6 @@ app.use(cors({
     origin: ["https://blog-page-mern-frontend.onrender.com"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
-    httpOnly: true, 
     secure: true, 
     sameSite: 'Strict',
 }))
