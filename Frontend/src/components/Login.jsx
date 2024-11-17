@@ -28,9 +28,6 @@ const Login = () => {
                 setemail("")
                 setpassword("")
             }
-            else{
-                alert("d")
-            }
         }
         catch(err){
             console.log(`Error in Handle Login`)
