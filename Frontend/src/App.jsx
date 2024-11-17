@@ -16,10 +16,9 @@ const App = () => {
   const [user,setuser] = useState("")
   const API_URL = "https://blog-page-mern-backend.onrender.com"
 
-  axios.defaults.withCredentials = true
   async function getData() {
     try{
-      const response = await axios.get(`${API_URL}/auth/verify`)
+      const response = await axios.get(`${API_URL}/auth/verify`, {withCredentials: true})
       setuser(response.data)
     }
     catch(err){
