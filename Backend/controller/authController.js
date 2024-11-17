@@ -58,7 +58,8 @@ const loginController = async(req,res) =>{
 
 const verifyUser = async(req,res,next) =>{
    try{
-        const  token  = await req.cookies.token
+        const token  = await req.cookies.token
+       console.log("token:", token)
         if(token){
             const verified = jwt.verify(token, process.env.SECRET_KEY)
             if(verified){
