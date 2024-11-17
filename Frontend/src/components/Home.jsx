@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
-  const API_URL = "http://localhost:3000"
+  const API_URL = "https://blog-page-mern-backend.onrender.com"
   const [posts,setposts] = useState([])
 
   async function getPost() {
