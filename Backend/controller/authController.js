@@ -33,7 +33,6 @@ const loginController = async(req,res) =>{
         const exist = await UserModel.findOne({email: email})
         if(exist){
             const verifyPassword = await bcrypt.compare(password, exist.password)
-            console.log(verifyPassword)
             if(verifyPassword){
                 const token = jwt.sign({email: exist.email, username: exist.username}, process.env.SECRET_KEY, {expiresIn: "1d"})
                   await res.cookie("token", token, { 
@@ -58,9 +57,7 @@ const loginController = async(req,res) =>{
 }
 
 const verifyUser = (req,res,next) =>{
-    const { token } = req.cookies
-    console.log("coos:",req?.cookies?.token)
-    console.log("coo:",req?.cookie?.token)
+    const  token  = req.cookies.token
     if(token){
         const verified = jwt.verify(token, process.env.SECRET_KEY)
         if(verified){
@@ -85,7 +82,7 @@ const verifyUserController = (req,res) =>{
 const logoutController = async(req,res) =>{
     await res.clearCookie('token', { 
                         secure: true, 
-                        sameSite: 'None'
+                        
                       })
     return res.status(200).json({message: "Token Deleted Successfully"})
 }
