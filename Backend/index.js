@@ -10,7 +10,7 @@ const authRouter = require('./router/authRouter')
 const postRouter = require('./router/postRouter')
 
 app.use(cors({
-    origin: ["http://localhost:5173"],
+    origin: ["https://blog-page-mern-frontend.onrender.com"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true
 }))
