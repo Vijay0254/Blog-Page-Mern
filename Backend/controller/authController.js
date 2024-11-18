@@ -85,15 +85,9 @@ const verifyUserController = (req,res) =>{
     return res.status(200).json({email: req.email, username: req.username})
 }
 
-const logoutController = async(req,res) =>{
-    try{
-        await res.clearCookie('token', { sameSite: 'None', secure: true })
-        return res.status(200).json({message: "Token Deleted Successfully"})
-    }
-    catch(err){
-        console.log(`Error in Logout Controller - ${err}`)
-        res.status(500).json({error: "Internal Server Error"})
-    }
+const logoutController = (req,res) =>{
+    res.clearCookie('token', { sameSite: 'None', secure: true })
+    return res.status(200).json({message: "Token Deleted Successfully"})
 }
 
 module.exports = { registerController, loginController, verifyUserController, logoutController, verifyUser }
