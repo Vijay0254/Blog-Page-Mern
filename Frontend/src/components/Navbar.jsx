@@ -8,7 +8,7 @@ const Navbar = () => {
     const API_URL = "https://blog-page-mern-backend.onrender.com"
     async function handleLogout() {
         try{
-            const response = await axios.get(`${API_URL}/auth/logout`)
+            const response = await axios.get(`${API_URL}/auth/logout`, {withCredentials: true})
             if(response.data.message == "Token Deleted Successfully")
             {
                 window.location.href = "/login"
