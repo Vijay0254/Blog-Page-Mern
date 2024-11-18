@@ -86,14 +86,9 @@ const verifyUserController = (req,res) =>{
 }
 
 const logoutController = async(req,res) =>{
-    const cookieCleared = await res.clearCookie('token', { secure: true, sameSite: 'None' })
-    console.log("cookieCleared: ",cookieCleared)
-    if(cookieCleared){
-        return res.status(200).json({message: "Token Deleted Successfully"})
-    }
-    else{
-        console.log("Cookie not clearing")
-    }
+    await res.clearCookie('token', { secure: true, sameSite: 'None' })
+    return res.status(200).json({message: "Token Deleted Successfully"})
+
 }
 
 module.exports = { registerController, loginController, verifyUserController, logoutController, verifyUser }
