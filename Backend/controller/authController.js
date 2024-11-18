@@ -86,7 +86,7 @@ const verifyUserController = (req,res) =>{
 }
 
 const logoutController = (req,res) =>{
-    res.clearCookie('token', { sameSite: 'None', secure: true })
+    res.clearCookie('token', { httpOnly: true, secure: true, sameSite: 'None' })
     return res.status(200).json({message: "Token Deleted Successfully"})
 }
 
